@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 1vh;
+    background-color: #fafafa;
+}
+
+.topbar {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: start;
+    background-color: #ff2400;
+}
+
+.topbar h3 {
+    color: white;
+    margin: 0 15px;
+    font-size: 24px;
+}
+
+.topbar img {
+    height: 100px;
+    width: 100px;
+    margin: 10px 10px;
+}
+
+.headTitle {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.itemRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 50%;
+    text-align: center;
+    height: 25vh;
+}
+
+.itemRow a {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    padding: 60px 20px;
+    transition: 0.4s ease;
+}
+
+.itemRow a:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 8px 5px #888888;
+}
+
+.itemRow a * {
+    font-size: 26px;
+}
+
+.goBackLink {
+    margin: 5px;
+    display: block;
+}
+
+.recordsHdr {
+    text-align: center;
+}
+
+.stdQryHdr {
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    padding: 5px;
+    margin: 5px;
+    background-color: #ff2400;
+    color: white;
+    border: 2px solid #212121;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #212121;
+}
+
+input[type="text"] {
+    padding: 3px;
+    font-size: 16px;
+}
+
+form {
+    text-align: center;
+}
+
+table {
+    background-color: white;
+    margin: 40px auto;
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #cccccc;
+}
+
+.results {
+    text-align: center;
+    margin: 10px;
+}
+
+footer {
+    background-color: #ff2400;
+    padding: 20px;
+    height: 19.18vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer * { 
+    color: white;
+    display: block;
+    margin: 12px 0;
+}
