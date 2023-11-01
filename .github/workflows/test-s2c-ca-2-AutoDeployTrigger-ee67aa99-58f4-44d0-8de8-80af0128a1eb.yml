@@ -1,0 +1,45 @@
+name: Trigger auto deployment for test-s2c-ca-2
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ master ]
+    paths:
+    - '**'
+    - '.github/workflows/test-s2c-ca-2-AutoDeployTrigger-ee67aa99-58f4-44d0-8de8-80af0128a1eb.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.TESTS2CCA2_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.TESTS2CCA2_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.TESTS2CCA2_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: nicolaslaynecontainerregistry1.azurecr.io
+          registryUsername: ${{ secrets.TESTS2CCA2_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.TESTS2CCA2_REGISTRY_PASSWORD }}
+          containerAppName: test-s2c-ca-2
+          resourceGroup: TestRscGrp-EastUS
+          imageToBuild: nicolaslaynecontainerregistry1.azurecr.io/test-s2c-ca-2:${{ github.sha }}
+          
+
+
